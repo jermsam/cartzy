@@ -1,0 +1,271 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D09227766E187A64B20DDC538E65340 /* cartzy_core.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30709F54D23AE11685072465B06480 /* cartzy_core.swift */; };
+		27883F3D18A7620DD8A5BC7606694266 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8A318C4C6A0C1F9181F806DCA617B9 /* AppState.swift */; };
+		3BAEB6F4CF9304A5C7F82C50E8D7594E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D64F186C275232840BE89F9E14748F /* ContentView.swift */; };
+		56F6869A2A0402E85005A777EE86BDDE /* cartzy_core.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */; };
+		846D75E4EAB80E6194D629A49133D845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 498C03275AE668E5F690A7A3004D1C0F /* Assets.xcassets */; };
+		848ADEFD2FA0FCD30040503A /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADEFC2FA0FCD30040503A /* ProductImageView.swift */; };
+		848ADEFF2FA0FE0D0040503A /* QuantityStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADEFE2FA0FE0D0040503A /* QuantityStepperView.swift */; };
+		848ADF012FA0FEE80040503A /* CartItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF002FA0FEE80040503A /* CartItemRowView.swift */; };
+		848ADF032FA0FFDC0040503A /* CartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF022FA0FFDC0040503A /* CartHeaderView.swift */; };
+		848ADF052FA1003B0040503A /* FreeShippingBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF042FA1003B0040503A /* FreeShippingBannerView.swift */; };
+		848ADF072FA100900040503A /* OrderSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF062FA100900040503A /* OrderSummaryView.swift */; };
+		848ADF092FA101420040503A /* CheckoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF082FA101420040503A /* CheckoutButtonView.swift */; };
+		848ADF0B2FA101E20040503A /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF0A2FA101E20040503A /* BottomMenuView.swift */; };
+		848ADF0D2FA102CA0040503A /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF0C2FA102CA0040503A /* MoneyFormatter.swift */; };
+		E3BFB35D30E06EC72340D6DC65CBBEBF /* CartzyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EBBE055D778486179957602FDACA /* CartzyApp.swift */; };
+		FD39CF1AFC42D4FE9AD735832EA22C82 /* cartzy_core.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		11922C23D3636A5E054F34DDFAD107BC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FD39CF1AFC42D4FE9AD735832EA22C82 /* cartzy_core.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		395394E288A6E91B14ED8D3C5F38C1C5 /* Cartzy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartzy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		498C03275AE668E5F690A7A3004D1C0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5741EBBE055D778486179957602FDACA /* CartzyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartzyApp.swift; sourceTree = "<group>"; };
+		65804619608EC372E5854501C1BEB44D /* Cartzy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cartzy-Bridging-Header.h"; sourceTree = "<group>"; };
+		848ADEFC2FA0FCD30040503A /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
+		848ADEFE2FA0FE0D0040503A /* QuantityStepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityStepperView.swift; sourceTree = "<group>"; };
+		848ADF002FA0FEE80040503A /* CartItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemRowView.swift; sourceTree = "<group>"; };
+		848ADF022FA0FFDC0040503A /* CartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeaderView.swift; sourceTree = "<group>"; };
+		848ADF042FA1003B0040503A /* FreeShippingBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeShippingBannerView.swift; sourceTree = "<group>"; };
+		848ADF062FA100900040503A /* OrderSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryView.swift; sourceTree = "<group>"; };
+		848ADF082FA101420040503A /* CheckoutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutButtonView.swift; sourceTree = "<group>"; };
+		848ADF0A2FA101E20040503A /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
+		848ADF0C2FA102CA0040503A /* MoneyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
+		87D64F186C275232840BE89F9E14748F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = cartzy_core.xcframework; sourceTree = "<group>"; };
+		D2C41EB023A6A6E48C68341FDA0A6F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF8A318C4C6A0C1F9181F806DCA617B9 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		EB30709F54D23AE11685072465B06480 /* cartzy_core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartzy_core.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1EAF56D15B283B7554745F5EE19A5048 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56F6869A2A0402E85005A777EE86BDDE /* cartzy_core.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11DDEB0F702DE96A105BB074B3489913 = {
+			isa = PBXGroup;
+			children = (
+				FC8F4ADCFA79870A182B35262BF24B44,
+				26793A397F6A5F8BB1F9C57B7E974E51 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		26793A397F6A5F8BB1F9C57B7E974E51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				395394E288A6E91B14ED8D3C5F38C1C5 /* Cartzy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC8F4ADCFA79870A182B35262BF24B44 = {
+			isa = PBXGroup;
+			children = (
+				5741EBBE055D778486179957602FDACA /* CartzyApp.swift */,
+				87D64F186C275232840BE89F9E14748F /* ContentView.swift */,
+				848ADF0C2FA102CA0040503A /* MoneyFormatter.swift */,
+				848ADF0A2FA101E20040503A /* BottomMenuView.swift */,
+				848ADF082FA101420040503A /* CheckoutButtonView.swift */,
+				848ADF062FA100900040503A /* OrderSummaryView.swift */,
+				848ADF042FA1003B0040503A /* FreeShippingBannerView.swift */,
+				848ADF022FA0FFDC0040503A /* CartHeaderView.swift */,
+				848ADEFE2FA0FE0D0040503A /* QuantityStepperView.swift */,
+				848ADEFC2FA0FCD30040503A /* ProductImageView.swift */,
+				DF8A318C4C6A0C1F9181F806DCA617B9 /* AppState.swift */,
+				848ADF002FA0FEE80040503A /* CartItemRowView.swift */,
+				EB30709F54D23AE11685072465B06480 /* cartzy_core.swift */,
+				97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */,
+				498C03275AE668E5F690A7A3004D1C0F /* Assets.xcassets */,
+				D2C41EB023A6A6E48C68341FDA0A6F4A /* Info.plist */,
+				65804619608EC372E5854501C1BEB44D /* Cartzy-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		44C53F891E0B98476951DD3B33DFC92F /* Cartzy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D10C267B58CA81D543AD34D9B3FCBEA /* Build configuration list for PBXNativeTarget "Cartzy" */;
+			buildPhases = (
+				F2F1CEBEC934A8FD82FC04BDBC2A46FC /* Sources */,
+				1EAF56D15B283B7554745F5EE19A5048 /* Frameworks */,
+				79064D5E21A1B0F0B91DF906D7BC0072 /* Resources */,
+				11922C23D3636A5E054F34DDFAD107BC /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cartzy;
+			productName = Cartzy;
+			productReference = 395394E288A6E91B14ED8D3C5F38C1C5 /* Cartzy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30EC4D25D3547DF1744528167245A428 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 4BBF017D7D88DB2DB7E96C6272D462E7 /* Build configuration list for PBXProject "Cartzy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 11DDEB0F702DE96A105BB074B3489913;
+			productRefGroup = 26793A397F6A5F8BB1F9C57B7E974E51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44C53F891E0B98476951DD3B33DFC92F /* Cartzy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		79064D5E21A1B0F0B91DF906D7BC0072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				846D75E4EAB80E6194D629A49133D845 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2F1CEBEC934A8FD82FC04BDBC2A46FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				848ADF0B2FA101E20040503A /* BottomMenuView.swift in Sources */,
+				848ADF012FA0FEE80040503A /* CartItemRowView.swift in Sources */,
+				E3BFB35D30E06EC72340D6DC65CBBEBF /* CartzyApp.swift in Sources */,
+				848ADF052FA1003B0040503A /* FreeShippingBannerView.swift in Sources */,
+				3BAEB6F4CF9304A5C7F82C50E8D7594E /* ContentView.swift in Sources */,
+				848ADEFD2FA0FCD30040503A /* ProductImageView.swift in Sources */,
+				848ADF092FA101420040503A /* CheckoutButtonView.swift in Sources */,
+				848ADEFF2FA0FE0D0040503A /* QuantityStepperView.swift in Sources */,
+				848ADF032FA0FFDC0040503A /* CartHeaderView.swift in Sources */,
+				27883F3D18A7620DD8A5BC7606694266 /* AppState.swift in Sources */,
+				848ADF0D2FA102CA0040503A /* MoneyFormatter.swift in Sources */,
+				848ADF072FA100900040503A /* OrderSummaryView.swift in Sources */,
+				0D09227766E187A64B20DDC538E65340 /* cartzy_core.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15D457831115CE3FC14887E5DC2DA647 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cartzy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Cartzy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4A11560955BFB57A6B71FBDD3AE35062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cartzy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Cartzy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D10C267B58CA81D543AD34D9B3FCBEA /* Build configuration list for PBXNativeTarget "Cartzy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D457831115CE3FC14887E5DC2DA647 /* Debug */,
+				4A11560955BFB57A6B71FBDD3AE35062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4BBF017D7D88DB2DB7E96C6272D462E7 /* Build configuration list for PBXProject "Cartzy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D457831115CE3FC14887E5DC2DA647 /* Debug */,
+				4A11560955BFB57A6B71FBDD3AE35062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30EC4D25D3547DF1744528167245A428 /* Project object */;
+}

@@ -37,6 +37,9 @@ playground.xcworkspace
 .swiftpm/
 Package.resolved
 
+# XCFramework (generated build artifacts)
+*.xcframework/
+
 # IDEs
 .idea/
 .vscode/

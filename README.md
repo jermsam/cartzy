@@ -35,3 +35,4 @@ Edit your business logic in `core/src/lib.rs`. The FFI bindings will be automati
 2. Expose via `#[uniffi::export]`
 3. Rebuild: `jffi build --platform <platform>`
 4. Update UI in `platforms/<platform>/`
+# cartzy

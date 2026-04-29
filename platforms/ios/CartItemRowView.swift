@@ -78,7 +78,7 @@ struct CartItemRowView: View {
         item: CartItemView(
             id: "sneakers",
             name: "Classic White Sneakers",
-            imageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80",
+            imageUrl: "https://cdn.packhacker.com/2022/04/2126e354-lululemon-everyday-backpack-2.0-23l.jpg",
             size: "9",
             color: "White",
             priceCents: 5999,

@@ -8,3 +8,4 @@ crate-type = ["cdylib", "staticlib", "lib"]
 
 [dependencies]
 uniffi = { version = "0.31.1", features = ["cli", "wasm-unstable-single-threaded"] }
+url = "2.5"

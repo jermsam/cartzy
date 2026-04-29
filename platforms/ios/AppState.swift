@@ -8,13 +8,19 @@ class AppState: ObservableObject {
       @Published private(set) var items: [CartItemView] = []
       @Published private(set) var summary: CartSummary?
       @Published var selectedTab: AppTab = .cart
+      @Published private(set) var products: [Product] = []
+      @Published private(set) var categories: [Category] = []
 
     let cart: Cart
+    let catalog: Catalog
 
     init() {
         let cart = Cart()
+        let catalog = Catalog()
         self.cart = cart
-
+        self.catalog = catalog
+        
+        loadCatalog()
         seed()     // temp demo data
         refresh()  // 👈 load into UI
     }
@@ -22,37 +28,42 @@ class AppState: ObservableObject {
     func selectTab(_ tab: AppTab) {
         selectedTab = tab
     }
+    
+    
 }
 
 
 extension AppState {
     private func seed() {
-        cart.addItem(
-            id: "sneakers",
-            name: "Classic White Sneakers",
-            imageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80",
-            size: "9",
-            color: "White",
-            priceCents: 5999
-        )
-
-        cart.addItem(
-            id: "jacket",
-            name: "Denim Jacket",
-            imageUrl: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?auto=format&fit=crop&w=300&q=80",
-            size: "M",
-            color: "Blue",
-            priceCents: 8999
-        )
-
-        cart.addItem(
-            id: "backpack",
-            name: "Everyday Backpack",
-            imageUrl: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=300&q=80",
-            size: nil,
-            color: "Black",
-            priceCents: 4999
-        )
+        addProductToCart(id: "sneakers")
+        addProductToCart(id: "jacket")
+        addProductToCart(id: "backpack")
+//        cart.addItem(
+//            id: "sneakers",
+//            name: "Classic White Sneakers",
+//            imageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80",
+//            size: "9",
+//            color: "White",
+//            priceCents: 5999
+//        )
+//
+//        cart.addItem(
+//            id: "jacket",
+//            name: "Denim Jacket",
+//            imageUrl: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?auto=format&fit=crop&w=300&q=80",
+//            size: "M",
+//            color: "Blue",
+//            priceCents: 8999
+//        )
+//
+//        cart.addItem(
+//            id: "backpack",
+//            name: "Everyday Backpack",
+//            imageUrl: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=300&q=80",
+//            size: nil,
+//            color: "Black",
+//            priceCents: 4999
+//        )
     }
 }
 
@@ -137,3 +148,20 @@ extension AppState {
 //        }
 //    }
 //}
+
+extension AppState {
+    func loadCatalog() {
+        products = catalog.listProducts()
+        categories = catalog.listCategories()
+    }
+    
+    func addProductToCart(id: String) {
+        guard let product = products.first(where: { $0.id == id }) else {
+            return
+        }
+
+        mutateCart {
+            cart.addProduct(product: product)
+        }
+    }
+}

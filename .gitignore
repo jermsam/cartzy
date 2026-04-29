@@ -40,6 +40,15 @@ Package.resolved
 # XCFramework (generated build artifacts)
 *.xcframework/
 
+# UniFFI Generated Files
+platforms/ios/cartzy_core.swift
+platforms/ios/cartzy_coreFFI.h
+platforms/ios/cartzy_coreFFI.modulemap
+
+# Test Files
+test_urls.rs
+platforms/ios/TestURLs.swift
+
 # IDEs
 .idea/
 .vscode/

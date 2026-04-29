@@ -8,28 +8,91 @@
 import Foundation
 import SwiftUI
 
+struct ShimmerView: View {
+    @State private var phase: CGFloat = 0
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Color(.secondarySystemBackground)
+                
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color(.secondarySystemBackground),
+                        Color(.tertiarySystemBackground),
+                        Color(.secondarySystemBackground)
+                    ]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .frame(width: geometry.size.width * 2)
+                .offset(x: phase * geometry.size.width * 2 - geometry.size.width)
+            }
+        }
+        .onAppear {
+            withAnimation(
+                Animation.linear(duration: 1.5)
+                    .repeatForever(autoreverses: false)
+            ) {
+                phase = 1
+            }
+        }
+    }
+}
+
 struct ProductImageView: View {
     let url: String
+    
+    private var validURL: URL? {
+        URL(string: url)
+    }
 
     var body: some View {
-        AsyncImage(url: URL(string: url)) { phase in
+        Group {
+            if let validURL = validURL {
+                AsyncImage(url: validURL) { phase in
             switch phase {
             case .empty:
-                ProgressView()
+                ShimmerView()
+                    .onAppear {
+                        print("📸 Loading image: \(url)")
+                    }
 
             case .success(let image):
                 image
                     .resizable()
                     .scaledToFill()
                     .clipped()
+                    .onAppear {
+                        print("✅ Image loaded successfully: \(url)")
+                    }
 
-            case .failure:
+            case .failure(let error):
                 Image(systemName: "photo")
                     .font(.system(size: 22))
                     .foregroundColor(.gray)
+                    .onAppear {
+                        print("❌ Image failed to load: \(url)")
+                        print("   Error: \(error.localizedDescription)")
+                    }
 
             @unknown default:
                 EmptyView()
+            }
+        }
+            } else {
+                // Invalid URL
+                VStack {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.system(size: 22))
+                        .foregroundColor(.orange)
+                    Text("Invalid URL")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
+                .onAppear {
+                    print("⚠️ Invalid URL string: \(url)")
+                }
             }
         }
         .frame(width: 96, height: 96)
@@ -40,7 +103,7 @@ struct ProductImageView: View {
 
 #Preview("Success") {
     ProductImageView(
-        url: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?q=80&w=1365&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        url: "https://cdn-images.farfetch-contents.com/28/06/21/72/28062172_57557673_600.jpg"
     )
 }
 

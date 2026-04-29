@@ -2,10 +2,12 @@ import SwiftUI
 
 @MainActor
 class AppState: ObservableObject {
-    @Published var greeting: String = ""
     // 👇 ADD THESE
-    @Published var items: [CartItemView] = []
-    @Published var summary: CartSummary?
+//    @Published var items: [CartItemView] = []
+//    @Published var summary: CartSummary?
+      @Published private(set) var items: [CartItemView] = []
+      @Published private(set) var summary: CartSummary?
+      @Published var selectedTab: AppTab = .cart
 
     let cart: Cart
 
@@ -15,6 +17,10 @@ class AppState: ObservableObject {
 
         seed()     // temp demo data
         refresh()  // 👈 load into UI
+    }
+    
+    func selectTab(_ tab: AppTab) {
+        selectedTab = tab
     }
 }
 
@@ -51,31 +57,83 @@ extension AppState {
 }
 
 extension AppState {
-    func refresh() {
+    private func mutateCart(_ operation: () -> Void) {
+        operation()
+        refresh()
+    }
+
+    private func refresh() {
         items = cart.listItems()
         summary = cart.summary()
     }
-    
-    private func perform(_ block: () -> Void) {
-        block()
-        refresh()
-    }
-    
+}
+
+extension AppState {
     func incrementItem(id: String) {
-        perform {
+        mutateCart {
             cart.incrementItem(id: id)
         }
     }
 
     func decrementItem(id: String) {
-        perform {
+        mutateCart {
             cart.decrementItem(id: id)
         }
     }
 
     func removeItem(id: String) {
-        perform {
+        mutateCart {
             cart.removeItem(id: id)
         }
     }
+
+    func addItem(
+        id: String,
+        name: String,
+        imageUrl: String,
+        size: String?,
+        color: String,
+        priceCents: UInt32
+    ) {
+        mutateCart {
+            cart.addItem(
+                id: id,
+                name: name,
+                imageUrl: imageUrl,
+                size: size,
+                color: color,
+                priceCents: priceCents
+            )
+        }
+    }
 }
+
+//extension AppState {
+////    func refresh() {
+////        items = cart.listItems()
+////        summary = cart.summary()
+////    }
+//    
+//    private func perform(_ block: () -> Void) {
+//        block()
+//        refresh()
+//    }
+//    
+//    func incrementItem(id: String) {
+//        perform {
+//            cart.incrementItem(id: id)
+//        }
+//    }
+//
+//    func decrementItem(id: String) {
+//        perform {
+//            cart.decrementItem(id: id)
+//        }
+//    }
+//
+//    func removeItem(id: String) {
+//        perform {
+//            cart.removeItem(id: id)
+//        }
+//    }
+//}

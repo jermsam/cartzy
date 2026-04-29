@@ -9,20 +9,34 @@ import Foundation
 import SwiftUI
 
 struct BottomMenuView: View {
+    let selectedTab: AppTab
     let itemCount: UInt32
+    let onSelect: (AppTab) -> Void
 
     var body: some View {
         HStack {
-            TabItemView(icon: "house", title: "Home", selected: false)
+            TabItemView(icon: "house", title: "Home", selected: selectedTab == .home)
+                .onTapGesture { onSelect(.home) }
+
             Spacer()
 
-            TabItemView(icon: "square.grid.2x2", title: "Categories", selected: false)
+            TabItemView(icon: "square.grid.2x2", title: "Categories", selected: selectedTab == .categories)
+                .onTapGesture { onSelect(.categories) }
+
             Spacer()
 
-            TabItemView(icon: "cart", title: "Cart", selected: true, badgeCount: itemCount)
+            TabItemView(
+                icon: "cart",
+                title: "Cart",
+                selected: selectedTab == .cart,
+                badgeCount: itemCount
+            )
+            .onTapGesture { onSelect(.cart) }
+
             Spacer()
 
-            TabItemView(icon: "person", title: "Profile", selected: false)
+            TabItemView(icon: "person", title: "Profile", selected: selectedTab == .profile)
+                .onTapGesture { onSelect(.profile) }
         }
         .padding(.horizontal, 36)
         .padding(.top, 12)
@@ -68,7 +82,11 @@ struct TabItemView: View {
     VStack {
         Spacer()
 
-        BottomMenuView(itemCount: 3)
+        BottomMenuView(
+            selectedTab: .cart,
+            itemCount: 3,
+            onSelect: { _ in }
+        )
     }
     .background(Color(.systemGroupedBackground))
 }

@@ -38,8 +38,13 @@ struct ContentView: View {
             .background(Color(.systemGroupedBackground))
 
 //            bottomMenu
+//            BottomMenuView(
+//                itemCount: appState.summary?.itemCount ?? 0
+//            )
             BottomMenuView(
-                itemCount: appState.summary?.itemCount ?? 0
+                selectedTab: appState.selectedTab,
+                itemCount: appState.summary?.itemCount ?? 0,
+                onSelect: { appState.selectTab($0) }
             )
         }
         .background(Color(.systemGroupedBackground))

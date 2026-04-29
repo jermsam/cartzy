@@ -21,6 +21,7 @@
 		848ADF092FA101420040503A /* CheckoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF082FA101420040503A /* CheckoutButtonView.swift */; };
 		848ADF0B2FA101E20040503A /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF0A2FA101E20040503A /* BottomMenuView.swift */; };
 		848ADF0D2FA102CA0040503A /* MoneyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF0C2FA102CA0040503A /* MoneyFormatter.swift */; };
+		848ADF0F2FA1A00C0040503A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848ADF0E2FA1A00C0040503A /* AppTab.swift */; };
 		E3BFB35D30E06EC72340D6DC65CBBEBF /* CartzyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EBBE055D778486179957602FDACA /* CartzyApp.swift */; };
 		FD39CF1AFC42D4FE9AD735832EA22C82 /* cartzy_core.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		848ADF082FA101420040503A /* CheckoutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutButtonView.swift; sourceTree = "<group>"; };
 		848ADF0A2FA101E20040503A /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		848ADF0C2FA102CA0040503A /* MoneyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyFormatter.swift; sourceTree = "<group>"; };
+		848ADF0E2FA1A00C0040503A /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		87D64F186C275232840BE89F9E14748F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = cartzy_core.xcframework; sourceTree = "<group>"; };
 		D2C41EB023A6A6E48C68341FDA0A6F4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				5741EBBE055D778486179957602FDACA /* CartzyApp.swift */,
 				87D64F186C275232840BE89F9E14748F /* ContentView.swift */,
+				848ADF0E2FA1A00C0040503A /* AppTab.swift */,
 				848ADF0C2FA102CA0040503A /* MoneyFormatter.swift */,
 				848ADF0A2FA101E20040503A /* BottomMenuView.swift */,
 				848ADF082FA101420040503A /* CheckoutButtonView.swift */,
@@ -184,6 +187,7 @@
 				848ADF032FA0FFDC0040503A /* CartHeaderView.swift in Sources */,
 				27883F3D18A7620DD8A5BC7606694266 /* AppState.swift in Sources */,
 				848ADF0D2FA102CA0040503A /* MoneyFormatter.swift in Sources */,
+				848ADF0F2FA1A00C0040503A /* AppTab.swift in Sources */,
 				848ADF072FA100900040503A /* OrderSummaryView.swift in Sources */,
 				0D09227766E187A64B20DDC538E65340 /* cartzy_core.swift in Sources */,
 			);

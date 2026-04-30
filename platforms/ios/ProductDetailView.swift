@@ -24,17 +24,6 @@ struct ProductDetailView: View {
     private var heroSection: some View {
         ZStack(alignment: .topLeading) {
             ProductHeroImageView(url: product.imageUrl)
-
-            Button(action: onClose) {
-                Image(systemName: "chevron.left")
-                    .font(.system(size: 18, weight: .bold))
-                    .foregroundColor(.primary)
-                    .frame(width: 42, height: 42)
-                    .background(.ultraThinMaterial)
-                    .clipShape(Circle())
-            }
-            .buttonStyle(.plain)
-            .padding(16)
         }
     }
 

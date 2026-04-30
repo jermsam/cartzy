@@ -11,11 +11,12 @@ class AppState: ObservableObject {
       @Published private(set) var products: [Product] = []
       @Published private(set) var categories: [Category] = []
     
-      @Published var selectedCategoryId: String?
+//      @Published var selectedCategoryId: String?
       @Published var selectedHomeCategoryId: String?
       @Published var selectedProductId: String?
     
     @Published var toastMessage: String?
+    @Published var path: [Route] = []
 
     let cart: Cart
     let catalog: Catalog
@@ -35,9 +36,9 @@ class AppState: ObservableObject {
         selectedTab = tab
     }
     
-    func selectCategory(id: String) {
-        selectedCategoryId = id
-    }
+//    func selectCategory(id: String) {
+//        selectedCategoryId = id
+//    }
     
     func selectHomeCategory(id: String?) {
         selectedHomeCategoryId = id
@@ -61,8 +62,26 @@ class AppState: ObservableObject {
         }
     }
     
-    func clearSelectedCategory() {
-        selectedCategoryId = nil
+//    func clearSelectedCategory() {
+//        selectedCategoryId = nil
+//    }
+    
+    func openProductDetail(id: String) {
+        path.append(.productDetail(id))
+    }
+
+    func openCategoryProducts(id: String) {
+        path.append(.categoryProducts(id))
+    }
+
+    func goBack() {
+        if !path.isEmpty {
+            path.removeLast()
+        }
+    }
+
+    func resetNavigation() {
+        path.removeAll()
     }
 }
 

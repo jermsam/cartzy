@@ -5,35 +5,45 @@ struct ContentView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
+            NavigationStack(path: $appState.path) {
+                VStack(spacing: 0) {
+                    Group {
+                        switch appState.selectedTab {
+                        case .home:
+                            HomeView()
 
-            VStack(spacing: 0) {
+                        case .categories:
+                            CategoriesView()
 
-                Group {
-                    switch appState.selectedTab {
-                    case .home:
-                        HomeView()
+                        case .cart:
+                            cartScreen
 
-                    case .categories:
-                        CategoriesView()
+                        case .profile:
+                            ProfileView()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                    case .cart:
-                        cartScreen
+                    BottomMenuView(
+                        selectedTab: appState.selectedTab,
+                        itemCount: appState.summary?.itemCount ?? 0,
+                        onSelect: { tab in
+                            appState.resetNavigation()
+                            appState.selectTab(tab)
+                        }
+                    )
+                }
+                .navigationDestination(for: Route.self) { route in
+                    switch route {
+                    case .productDetail(let productId):
+                        ProductDetailRouteView(productId: productId)
 
-                    case .profile:
-                        ProfileView()
+                    case .categoryProducts(let categoryId):
+                        CategoryProductsRouteView(categoryId: categoryId)
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-                // 🔻 Bottom menu
-                BottomMenuView(
-                    selectedTab: appState.selectedTab,
-                    itemCount: appState.summary?.itemCount ?? 0,
-                    onSelect: { appState.selectTab($0) }
-                )
             }
 
-            // 🍞 Toast
             if let message = appState.toastMessage {
                 ToastView(message: message)
                     .padding(.bottom, 90)

@@ -10,62 +10,20 @@ struct CategoryProductsView: View {
         GridItem(.flexible(), spacing: 16)
     ]
 
-    // 🔁 Selected product → detail screen
-    private var selectedProduct: Product? {
-        guard let id = appState.selectedProductId else {
-            return nil
-        }
-
-        return appState.products.first { $0.id == id }
-    }
-
-    // 🔁 Products for this category
     private var products: [Product] {
         appState.products.filter { $0.categoryId == category.id }
     }
 
     var body: some View {
-        if let selectedProduct {
-            ProductDetailView(
-                product: selectedProduct,
-                onClose: {
-                    appState.closeProductDetail()
-                },
-                onAddToCart: {
-                    appState.addProductToCart(id: selectedProduct.id)
-                }
-            )
-        } else {
-            categoryContent
-        }
-    }
-
-    // 📦 Main category screen
-    private var categoryContent: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 18) {
+                Text(category.name)
+                    .font(.largeTitle.bold())
 
-                // 🔙 Header
-                HStack {
-                    Button {
-                        appState.clearSelectedCategory() // ✅ FIXED
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 18, weight: .bold))
-                    }
-                    .buttonStyle(.plain)
-
-                    Text(category.name)
-                        .font(.largeTitle.bold())
-
-                    Spacer()
-                }
-
-                // 🛍 Product grid
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(products, id: \.id) { product in
                         Button {
-                            appState.selectProduct(id: product.id)
+                            appState.openProductDetail(id: product.id)
                         } label: {
                             ProductCardView(
                                 product: product,
@@ -83,16 +41,20 @@ struct CategoryProductsView: View {
             .padding(.bottom, 18)
         }
         .background(Color(.systemGroupedBackground))
+        .navigationTitle(category.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    CategoryProductsView(
-        category: Category(
-            id: "jackets",
-            name: "Jackets",
-            icon: "tshirt"
+    NavigationStack {
+        CategoryProductsView(
+            category: Category(
+                id: "jackets",
+                name: "Jackets",
+                icon: "tshirt"
+            )
         )
-    )
-    .environmentObject(AppState())
+        .environmentObject(AppState())
+    }
 }

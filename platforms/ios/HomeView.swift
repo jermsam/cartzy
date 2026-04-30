@@ -8,15 +8,6 @@ struct HomeView: View {
         GridItem(.flexible(), spacing: 16)
     ]
 
-    // 🔁 Selected product → detail screen
-    private var selectedProduct: Product? {
-        guard let id = appState.selectedProductId else {
-            return nil
-        }
-
-        return appState.products.first { $0.id == id }
-    }
-
     // 🔁 Category filtering
     private var visibleProducts: [Product] {
         guard let selected = appState.selectedHomeCategoryId else {
@@ -27,24 +18,6 @@ struct HomeView: View {
     }
 
     var body: some View {
-        // 👉 Navigation switch
-        if let selectedProduct {
-            ProductDetailView(
-                product: selectedProduct,
-                onClose: {
-                    appState.closeProductDetail()
-                },
-                onAddToCart: {
-                    appState.addProductToCart(id: selectedProduct.id)
-                }
-            )
-        } else {
-            homeContent
-        }
-    }
-
-    // 🏠 Main home content
-    private var homeContent: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 18) {
 
@@ -56,7 +29,7 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
 
-                        // "All" chip
+                        // "All"
                         Button {
                             appState.selectHomeCategory(id: nil)
                         } label: {
@@ -78,7 +51,7 @@ struct HomeView: View {
                         }
                         .buttonStyle(.plain)
 
-                        // category chips
+                        // Categories
                         ForEach(appState.categories, id: \.id) { category in
                             CategoryChipView(
                                 category: category,
@@ -95,7 +68,7 @@ struct HomeView: View {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(visibleProducts, id: \.id) { product in
                         Button {
-                            appState.selectProduct(id: product.id)
+                            appState.openProductDetail(id: product.id) // ✅ NavigationStack push
                         } label: {
                             ProductCardView(
                                 product: product,

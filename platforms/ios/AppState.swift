@@ -10,6 +10,12 @@ class AppState: ObservableObject {
       @Published var selectedTab: AppTab = .cart
       @Published private(set) var products: [Product] = []
       @Published private(set) var categories: [Category] = []
+    
+      @Published var selectedCategoryId: String?
+      @Published var selectedHomeCategoryId: String?
+      @Published var selectedProductId: String?
+    
+    @Published var toastMessage: String?
 
     let cart: Cart
     let catalog: Catalog
@@ -29,7 +35,35 @@ class AppState: ObservableObject {
         selectedTab = tab
     }
     
+    func selectCategory(id: String) {
+        selectedCategoryId = id
+    }
     
+    func selectHomeCategory(id: String?) {
+        selectedHomeCategoryId = id
+    }
+    
+    func selectProduct(id: String) {
+        selectedProductId = id
+    }
+
+    func closeProductDetail() {
+        selectedProductId = nil
+    }
+    
+    func showToast(_ message: String) {
+        toastMessage = message
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            if self.toastMessage == message {
+                self.toastMessage = nil
+            }
+        }
+    }
+    
+    func clearSelectedCategory() {
+        selectedCategoryId = nil
+    }
 }
 
 
@@ -163,5 +197,17 @@ extension AppState {
         mutateCart {
             cart.addProduct(product: product)
         }
+
+        showToast("Added to cart")
     }
+    
+//    func addProductToCart(id: String) {
+//        guard let product = products.first(where: { $0.id == id }) else {
+//            return
+//        }
+//
+//        mutateCart {
+//            cart.addProduct(product: product)
+//        }
+//    }
 }

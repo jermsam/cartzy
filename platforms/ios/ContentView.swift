@@ -4,94 +4,81 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
-        VStack(spacing: 0) {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 14) {
-//                    header
-                    CartHeaderView(
-                        itemCount: appState.summary?.itemCount ?? 0
-                    )
-//                    freeShippingBanner
-                    FreeShippingBannerView(
-                        qualifies: appState.summary?.qualifiesForFreeShipping == true
-                    )
-//                    cartItems
-                    ForEach(appState.items, id: \.id) { item in
-                        CartItemRowView(
-                            item: item,
-                            onIncrement: { appState.incrementItem(id: item.id) },
-                            onDecrement: { appState.decrementItem(id: item.id) },
-                            onRemove: { appState.removeItem(id: item.id) }
-                        )
-                    }
-//                    orderSummary
-                    OrderSummaryView(summary: appState.summary)
-//                    checkoutButton
-                    CheckoutButtonView {
-                        // TODO: checkout
+        ZStack(alignment: .bottom) {
+
+            VStack(spacing: 0) {
+
+                Group {
+                    switch appState.selectedTab {
+                    case .home:
+                        HomeView()
+
+                    case .categories:
+                        CategoriesView()
+
+                    case .cart:
+                        cartScreen
+
+                    case .profile:
+                        ProfileView()
                     }
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 22)
-                .padding(.bottom, 18)
-            }
-            .background(Color(.systemGroupedBackground))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-//            bottomMenu
-//            BottomMenuView(
-//                itemCount: appState.summary?.itemCount ?? 0
-//            )
-            BottomMenuView(
-                selectedTab: appState.selectedTab,
-                itemCount: appState.summary?.itemCount ?? 0,
-                onSelect: { appState.selectTab($0) }
-            )
+                // 🔻 Bottom menu
+                BottomMenuView(
+                    selectedTab: appState.selectedTab,
+                    itemCount: appState.summary?.itemCount ?? 0,
+                    onSelect: { appState.selectTab($0) }
+                )
+            }
+
+            // 🍞 Toast
+            if let message = appState.toastMessage {
+                ToastView(message: message)
+                    .padding(.bottom, 90)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
+        .animation(.spring(), value: appState.toastMessage)
         .background(Color(.systemGroupedBackground))
     }
 
-//    private var header: some View {
-//        CartHeaderView(
-//            itemCount: appState.summary?.itemCount ?? 0
-//        )
-//    }
+    // 🛒 Cart screen (unchanged)
+    private var cartScreen: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 14) {
 
-//    private var freeShippingBanner: some View {
-//        FreeShippingBannerView(
-//            qualifies: appState.summary?.qualifiesForFreeShipping == true
-//        )
-//    }
+                CartHeaderView(
+                    itemCount: appState.summary?.itemCount ?? 0
+                )
 
-//    private var cartItems: some View {
-//        ForEach(appState.items, id: \.id) { item in
-//            CartItemRowView(
-//                item: item,
-//                onIncrement: { appState.increment(item) },
-//                onDecrement: { appState.decrement(item) },
-//                onRemove: { appState.remove(item) }
-//            )
-//        }
-//    }
+                FreeShippingBannerView(
+                    qualifies: appState.summary?.qualifiesForFreeShipping == true
+                )
 
-//    private var orderSummary: some View {
-//        OrderSummaryView(summary: appState.summary)
-//    }
+                ForEach(appState.items, id: \.id) { item in
+                    CartItemRowView(
+                        item: item,
+                        onIncrement: { appState.incrementItem(id: item.id) },
+                        onDecrement: { appState.decrementItem(id: item.id) },
+                        onRemove: { appState.removeItem(id: item.id) }
+                    )
+                }
 
-//    private var checkoutButton: some View {
-//        CheckoutButtonView {
-//            // TODO: checkout
-//        }
-//    }
+                OrderSummaryView(summary: appState.summary)
 
-//    private var bottomMenu: some View {
-//        BottomMenuView(
-//            itemCount: appState.summary?.itemCount ?? 0
-//        )
-//    }
-
-
+                CheckoutButtonView {
+                    // TODO: checkout
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 22)
+            .padding(.bottom, 18)
+        }
+        .background(Color(.systemGroupedBackground))
+    }
 }
-
 
 #Preview {
     ContentView()

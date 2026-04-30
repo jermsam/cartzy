@@ -52,7 +52,7 @@ impl Catalog {
                     id: "sneakers".into(),
                     name: "Classic White Sneakers".into(),
                     image_url: ImageOptimizer::optimize_product_thumbnail(
-                        "https://cdn.shopify.com/s/files/1/1002/1104/files/unnamed_48ae1068-ec4d-45ce-ab94-33f71773269b_600x600.jpg?v=1607959717"
+                        "https://martinvalen.com/38216-mv_large_default/chunky-sneakers-shoes-white.jpg"
                     ),
                     category_id: "shoes".into(),
                     price_cents: 5999,
@@ -63,7 +63,7 @@ impl Catalog {
                     id: "jacket".into(),
                     name: "Denim Jacket".into(),
                     image_url: ImageOptimizer::optimize_product_thumbnail(
-                        "https://shopsteelcity.com/cdn/shop/files/blue-denim-jacket-front_1_1_800x.jpg?v=1773331363"
+                        "https://www.jcrew.com/s7-img-facade/AW273_DM5974?hei=2000&crop=0,0,1600,0"
                     ),
                     category_id: "jackets".into(),
                     price_cents: 8999,
@@ -74,7 +74,7 @@ impl Catalog {
                     id: "backpack".into(),
                     name: "Everyday Backpack".into(),
                     image_url: ImageOptimizer::optimize_product_thumbnail(
-                        "https://cdn.packhacker.com/2022/04/2126e354-lululemon-everyday-backpack-2.0-23l.jpg"
+                        "https://brevite.co/cdn/shop/files/250714CHARD_BREVITE_DailyBagWeb07_2025_v1tb.jpg?v=1757963466&width=1946"
                     ),
                     category_id: "bags".into(),
                     price_cents: 4999,

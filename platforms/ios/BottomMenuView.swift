@@ -15,28 +15,44 @@ struct BottomMenuView: View {
 
     var body: some View {
         HStack {
-            TabItemView(icon: "house", title: "Home", selected: selectedTab == .home)
-                .onTapGesture { onSelect(.home) }
+            Button {
+                onSelect(.home)
+            } label: {
+                TabItemView(icon: "house", title: "Home", selected: selectedTab == .home)
+            }
+            .buttonStyle(.plain)
 
             Spacer()
 
-            TabItemView(icon: "square.grid.2x2", title: "Categories", selected: selectedTab == .categories)
-                .onTapGesture { onSelect(.categories) }
+            Button {
+                onSelect(.categories)
+            } label: {
+                TabItemView(icon: "square.grid.2x2", title: "Categories", selected: selectedTab == .categories)
+            }
+            .buttonStyle(.plain)
 
             Spacer()
 
-            TabItemView(
-                icon: "cart",
-                title: "Cart",
-                selected: selectedTab == .cart,
-                badgeCount: itemCount
-            )
-            .onTapGesture { onSelect(.cart) }
+            Button {
+                onSelect(.cart)
+            } label: {
+                TabItemView(
+                    icon: "cart",
+                    title: "Cart",
+                    selected: selectedTab == .cart,
+                    badgeCount: itemCount
+                )
+            }
+            .buttonStyle(.plain)
 
             Spacer()
 
-            TabItemView(icon: "person", title: "Profile", selected: selectedTab == .profile)
-                .onTapGesture { onSelect(.profile) }
+            Button {
+                onSelect(.profile)
+            } label: {
+                TabItemView(icon: "person", title: "Profile", selected: selectedTab == .profile)
+            }
+            .buttonStyle(.plain)
         }
         .padding(.horizontal, 36)
         .padding(.top, 12)
@@ -58,7 +74,7 @@ struct TabItemView: View {
                 Image(systemName: icon)
                     .font(.system(size: 25))
 
-                if selected, badgeCount > 0 {
+                if badgeCount > 0 {
                     Text("\(badgeCount)")
                         .font(.system(size: 11, weight: .bold))
                         .foregroundColor(.white)

@@ -11,7 +11,8 @@ struct ProductDetailView: View {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 20) {
 
-                    ProductHeroImageView(url: product.imageUrl)
+//                    ProductHeroImageView(url: product.imageUrl)
+                    ZoomableImageView(url: product.imageUrl)
 
                     VStack(alignment: .leading, spacing: 12) {
                         Text(product.name)
@@ -85,7 +86,9 @@ struct ProductDetailView: View {
             Spacer()
 
             Button {
-                onAddToCart()
+                withAnimation(.spring(response: 0.25, dampingFraction: 0.55)) {
+                    onAddToCart()
+                }
             } label: {
                 Text("Add to Cart")
                     .font(.headline.bold())

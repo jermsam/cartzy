@@ -48,8 +48,21 @@ struct ProductCardView: View {
                     Spacer()
 
                     // ➕ Add to cart
+//                    Button {
+//                        onAddToCart()
+//                    } label: {
+//                        Image(systemName: "plus")
+//                            .font(.system(size: 14, weight: .bold))
+//                            .foregroundColor(.white)
+//                            .frame(width: 36, height: 36)
+//                            .background(Color.blue)
+//                            .clipShape(Circle())
+//                    }
+//                    .buttonStyle(.plain)
                     Button {
-                        onAddToCart()
+                        withAnimation(.spring(response: 0.25, dampingFraction: 0.55)) {
+                            onAddToCart()
+                        }
                     } label: {
                         Image(systemName: "plus")
                             .font(.system(size: 14, weight: .bold))

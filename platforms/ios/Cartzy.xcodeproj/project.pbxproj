@@ -11,6 +11,7 @@
 		27883F3D18A7620DD8A5BC7606694266 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8A318C4C6A0C1F9181F806DCA617B9 /* AppState.swift */; };
 		3BAEB6F4CF9304A5C7F82C50E8D7594E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D64F186C275232840BE89F9E14748F /* ContentView.swift */; };
 		56F6869A2A0402E85005A777EE86BDDE /* cartzy_core.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B9F3E3D996BD67BD89D82B4504AA7D /* cartzy_core.xcframework */; };
+		843FB4362FA32FF40047ABF8 /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FB4352FA32FF40047ABF8 /* ZoomableImageView.swift */; };
 		846D75E4EAB80E6194D629A49133D845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 498C03275AE668E5F690A7A3004D1C0F /* Assets.xcassets */; };
 		848945002FA325B7004CD60C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848944FF2FA325B7004CD60C /* Route.swift */; };
 		848945022FA326C5004CD60C /* ProductDetailRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848945012FA326C5004CD60C /* ProductDetailRouteView.swift */; };
@@ -58,6 +59,7 @@
 		498C03275AE668E5F690A7A3004D1C0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5741EBBE055D778486179957602FDACA /* CartzyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartzyApp.swift; sourceTree = "<group>"; };
 		65804619608EC372E5854501C1BEB44D /* Cartzy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cartzy-Bridging-Header.h"; sourceTree = "<group>"; };
+		843FB4352FA32FF40047ABF8 /* ZoomableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableImageView.swift; sourceTree = "<group>"; };
 		848944FF2FA325B7004CD60C /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		848945012FA326C5004CD60C /* ProductDetailRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRouteView.swift; sourceTree = "<group>"; };
 		848945032FA326F1004CD60C /* CategoryProductsRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductsRouteView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				5741EBBE055D778486179957602FDACA /* CartzyApp.swift */,
 				87D64F186C275232840BE89F9E14748F /* ContentView.swift */,
+				843FB4352FA32FF40047ABF8 /* ZoomableImageView.swift */,
 				848945012FA326C5004CD60C /* ProductDetailRouteView.swift */,
 				848945032FA326F1004CD60C /* CategoryProductsRouteView.swift */,
 				848944FF2FA325B7004CD60C /* Route.swift */,
@@ -240,6 +243,7 @@
 				848ADF0F2FA1A00C0040503A /* AppTab.swift in Sources */,
 				848ADF192FA301BA0040503A /* HomeView.swift in Sources */,
 				848ADF072FA100900040503A /* OrderSummaryView.swift in Sources */,
+				843FB4362FA32FF40047ABF8 /* ZoomableImageView.swift in Sources */,
 				848945002FA325B7004CD60C /* Route.swift in Sources */,
 				0D09227766E187A64B20DDC538E65340 /* cartzy_core.swift in Sources */,
 			);

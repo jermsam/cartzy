@@ -17,6 +17,7 @@ class AppState: ObservableObject {
     
     @Published var toastMessage: String?
     @Published var path: [Route] = []
+    @Published private(set) var favoriteProductIds: Set<String> = []
 
     let cart: Cart
     let catalog: Catalog
@@ -82,6 +83,18 @@ class AppState: ObservableObject {
 
     func resetNavigation() {
         path.removeAll()
+    }
+    
+    func toggleFavorite(id: String) {
+        if favoriteProductIds.contains(id) {
+            favoriteProductIds.remove(id)
+        } else {
+            favoriteProductIds.insert(id)
+        }
+    }
+
+    func isFavorite(id: String) -> Bool {
+        favoriteProductIds.contains(id)
     }
 }
 

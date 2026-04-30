@@ -2,51 +2,57 @@ import SwiftUI
 
 struct ProductCardView: View {
     let product: Product
+    let isFavorite: Bool
+    let onToggleFavorite: () -> Void
     let onAddToCart: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            ZStack(alignment: .topTrailing) {
-                ProductImageView(url: product.imageUrl)
-                    .frame(width: 150, height: 150)
-                    .clipShape(RoundedRectangle(cornerRadius: 22))
 
-                Button {
-                    // future favorite action
-                } label: {
-                    Image(systemName: "heart")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.primary)
-                        .frame(width: 34, height: 34)
-                        .background(.ultraThinMaterial)
-                        .clipShape(Circle())
+            // 🖼 Image + favorite
+            HStack {
+                ZStack(alignment: .topTrailing) {
+                    ProductImageView(url: product.imageUrl)
+
+                    Button {
+                        onToggleFavorite()
+                    } label: {
+                        Image(systemName: isFavorite ? "heart.fill" : "heart")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(isFavorite ? .red : .primary)
+                            .frame(width: 34, height: 34)
+                            .background(Color(.systemGray5))
+                            .clipShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .offset(x: 8, y: -8)
                 }
-                .buttonStyle(.plain)
-                .padding(10)
+
+                Spacer()
             }
 
+            // 📄 Info
             VStack(alignment: .leading, spacing: 6) {
                 Text(product.name)
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 16, weight: .semibold))
                     .lineLimit(2)
 
                 Text("\(product.color)\(product.size != nil ? " • Size \(product.size!)" : "")")
-                    .font(.system(size: 13))
+                    .font(.caption)
                     .foregroundColor(.secondary)
 
                 HStack {
                     Text(formatMoney(product.priceCents))
-                        .font(.system(size: 17, weight: .bold))
+                        .font(.headline.bold())
 
                     Spacer()
 
+                    // ➕ Add to cart
                     Button {
-                        withAnimation {
-                            onAddToCart()
-                        }
+                        onAddToCart()
                     } label: {
                         Image(systemName: "plus")
-                            .font(.system(size: 15, weight: .bold))
+                            .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white)
                             .frame(width: 36, height: 36)
                             .background(Color.blue)
@@ -55,30 +61,28 @@ struct ProductCardView: View {
                     .buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal, 2)
         }
         .padding(12)
         .background(Color(.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 24))
-        .shadow(color: Color.black.opacity(0.06), radius: 12, x: 0, y: 6)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: .black.opacity(0.04), radius: 8, y: 4)
     }
 }
 
 #Preview {
     ProductCardView(
         product: Product(
-            id: "sneakers",
-            name: "Classic White Sneakers",
-            imageUrl: "https://martinvalen.com/38216-mv_large_default/chunky-sneakers-shoes-white.jpg",
-            categoryId: "shoes",
-            priceCents: 5999,
-            color: "White",
-            size: "9"
+            id: "jacket",
+            name: "Denim Jacket",
+            imageUrl: "https://cdn-images.farfetch-contents.com/28/06/21/72/28062172_57557673_600.jpg",
+            categoryId: "jackets",
+            priceCents: 8999,
+            color: "Blue",
+            size: "M"
         ),
+        isFavorite: false,
+        onToggleFavorite: {},
         onAddToCart: {}
     )
-    .frame(width: 190)
     .padding()
-    .background(Color(.systemGroupedBackground))
-    .previewLayout(.sizeThatFits)
 }

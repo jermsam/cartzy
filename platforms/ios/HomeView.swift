@@ -72,6 +72,10 @@ struct HomeView: View {
                         } label: {
                             ProductCardView(
                                 product: product,
+                                isFavorite: appState.isFavorite(id: product.id),
+                                onToggleFavorite: {
+                                    appState.toggleFavorite(id: product.id)
+                                },
                                 onAddToCart: {
                                     appState.addProductToCart(id: product.id)
                                 }

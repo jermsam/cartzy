@@ -7,18 +7,39 @@ struct ProductDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 20) {
-                    heroSection
-                    productInfo
-                }
-                .padding(20)
-                .padding(.bottom, 24)
-            }
-            .background(Color(.systemGroupedBackground))
 
-            stickyAddToCartBar
+                    ProductHeroImageView(url: product.imageUrl)
+
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(product.name)
+                            .font(.system(size: 32, weight: .bold))
+
+                        Text(formatMoney(product.priceCents))
+                            .font(.title2.bold())
+
+                        Text("Color: \(product.color)")
+                            .foregroundColor(.secondary)
+
+                        if let size = product.size {
+                            Text("Size: \(size)")
+                                .foregroundColor(.secondary)
+                        }
+
+                        Text("A clean everyday essential built for comfort, style, and daily use.")
+                            .foregroundColor(.secondary)
+                            .padding(.top, 6)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 24)
+                }
+            }
+
+            bottomBar
         }
+        .background(Color(.systemGroupedBackground))
     }
 
     private var heroSection: some View {
@@ -82,7 +103,38 @@ struct ProductDetailView: View {
         .background(Color(.systemBackground))
         .shadow(color: Color.black.opacity(0.08), radius: 10, x: 0, y: -4)
     }
+    
+    private var bottomBar: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(formatMoney(product.priceCents))
+                    .font(.headline.bold())
+
+                Text("Ready to ship")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+
+            Spacer()
+
+            Button {
+                onAddToCart()
+            } label: {
+                Text("Add to Cart")
+                    .font(.headline.bold())
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 28)
+                    .padding(.vertical, 14)
+                    .background(Color.blue)
+                    .clipShape(Capsule())
+            }
+        }
+        .padding(20)
+        .background(.ultraThinMaterial) // 🔥 modern blur
+    }
 }
+
+
 
 #Preview {
     ProductDetailView(

@@ -68,3 +68,30 @@ yarn-error.log*
 
 # Dependencies
 node_modules/
+
+# Android / Kotlin
+platforms/android/build/
+platforms/android/.gradle/
+platforms/android/local.properties
+platforms/android/.cxx/
+platforms/android/app/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Android Studio
+platforms/android/.idea/
+platforms/android/*.iml
+platforms/android/.externalNativeBuild/
+platforms/android/captures/
+
+# Gradle
+.gradle/
+gradle-wrapper.jar
+
+# UniFFI Generated Files (Android)
+platforms/android/app/src/main/java/uniffi/
+platforms/android/app/src/main/jniLibs/
+*.so

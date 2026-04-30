@@ -3,7 +3,10 @@ name = "cartzy"
 version = "0.1.0"
 
 [platforms]
-enabled = ["ios"]
+enabled = [
+    "ios",
+    "android",
+]
 
 [platforms.ios]
 deployment_target = "16.0"

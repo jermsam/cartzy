@@ -66,22 +66,28 @@ struct HomeView: View {
 
                 // 🛍 Product grid
                 LazyVGrid(columns: columns, spacing: 16) {
-                    ForEach(visibleProducts, id: \.id) { product in
-                        Button {
-                            appState.openProductDetail(id: product.id) // ✅ NavigationStack push
-                        } label: {
-                            ProductCardView(
-                                product: product,
-                                isFavorite: appState.isFavorite(id: product.id),
-                                onToggleFavorite: {
-                                    appState.toggleFavorite(id: product.id)
-                                },
-                                onAddToCart: {
-                                    appState.addProductToCart(id: product.id)
-                                }
-                            )
+                    if appState.isCatalogLoading {
+                        ForEach(0..<6, id: \.self) { _ in
+                            ProductCardSkeletonView()
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(visibleProducts, id: \.id) { product in
+                            Button {
+                                appState.openProductDetail(id: product.id)
+                            } label: {
+                                ProductCardView(
+                                    product: product,
+                                    isFavorite: appState.isFavorite(id: product.id),
+                                    onToggleFavorite: {
+                                        appState.toggleFavorite(id: product.id)
+                                    },
+                                    onAddToCart: {
+                                        appState.addProductToCart(id: product.id)
+                                    }
+                                )
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
             }

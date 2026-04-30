@@ -18,6 +18,7 @@ class AppState: ObservableObject {
     @Published var toastMessage: String?
     @Published var path: [Route] = []
     @Published private(set) var favoriteProductIds: Set<String> = []
+    @Published private(set) var isCatalogLoading = true
 
     let cart: Cart
     let catalog: Catalog
@@ -217,8 +218,12 @@ extension AppState {
 
 extension AppState {
     func loadCatalog() {
+        isCatalogLoading = true
+
         products = catalog.listProducts()
         categories = catalog.listCategories()
+
+        isCatalogLoading = false
     }
     
     func addProductToCart(id: String) {

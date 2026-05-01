@@ -10,8 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import uniffi.cartzy_core.Cart
-import uniffi.cartzy_core.Category
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,18 +29,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun CartzyApp(initialGreeting: String = "Loading...") {
-    var greeting by remember { mutableStateOf(initialGreeting) }
-    var cart: Cart? by remember { mutableStateOf(null) }
-    var category: Category? by remember { mutableStateOf(null) }
-
-    if (initialGreeting == "Loading...") {
-        LaunchedEffect(Unit) {
-            val newCart = Cart()
-            cart = newCart
-
-        }
-    }
+fun CartzyApp(
+    viewModel: AppViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsState()
     
     Column(
         modifier = Modifier
@@ -51,14 +42,14 @@ fun CartzyApp(initialGreeting: String = "Loading...") {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = greeting,
+            text = uiState.greeting,
             style = MaterialTheme.typography.headlineMedium
         )
         
         Spacer(modifier = Modifier.height(16.dp))
         
         Button(onClick = {
-
+            viewModel.refreshGreeting()
         }) {
             Text("Refresh")
         }
@@ -72,5 +63,24 @@ fun CartzyApp(initialGreeting: String = "Loading...") {
 )
 @Composable
 fun CartzyAppPreview() {
-    CartzyApp(initialGreeting = "Hello from JFFI")
+    MaterialTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Hello from JFFI",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Button(onClick = {}) {
+                Text("Refresh")
+            }
+        }
+    }
 }

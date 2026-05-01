@@ -33,7 +33,7 @@ fun CartzyApp(
     viewModel: AppViewModel = viewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,17 +41,33 @@ fun CartzyApp(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = uiState.greeting,
-            style = MaterialTheme.typography.headlineMedium
-        )
-        
+        if (uiState.isCatalogLoading) {
+            CircularProgressIndicator()
+            Spacer(modifier = Modifier.height(8.dp))
+            Text("Loading catalog...")
+        } else {
+            Text(
+                text = "${uiState.products.size} products, ${uiState.categories.size} categories",
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "${uiState.cartItems.size} cart items",
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            uiState.summary?.let { summary ->
+                Text(
+                    text = "Total: $${summary.totalCents / 100u}.${(summary.totalCents % 100u).toString().padStart(2, '0')}",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
-        
-        Button(onClick = {
-            viewModel.refreshGreeting()
-        }) {
-            Text("Refresh")
+
+        Button(onClick = { viewModel.loadCatalog() }) {
+            Text("Reload Catalog")
         }
     }
 }
@@ -72,14 +88,17 @@ fun CartzyAppPreview() {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Hello from JFFI",
-                style = MaterialTheme.typography.headlineMedium
+                text = "3 products, 3 categories",
+                style = MaterialTheme.typography.headlineSmall
             )
-            
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "3 cart items",
+                style = MaterialTheme.typography.bodyLarge
+            )
             Spacer(modifier = Modifier.height(16.dp))
-            
             Button(onClick = {}) {
-                Text("Refresh")
+                Text("Reload Catalog")
             }
         }
     }

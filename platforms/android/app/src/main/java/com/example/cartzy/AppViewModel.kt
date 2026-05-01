@@ -5,18 +5,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import uniffi.cartzy_core.Core
+import uniffi.cartzy_core.Cart
 
 data class AppUiState(
     val greeting: String = ""
 )
 
 class AppViewModel : ViewModel() {
-    private val core = Core()
+    private val cart = Cart()
 
     private val _uiState = MutableStateFlow(
         AppUiState(
-            greeting = core.greeting()
+
         )
     )
 
@@ -25,7 +25,7 @@ class AppViewModel : ViewModel() {
     fun refreshGreeting() {
         _uiState.update { currentState ->
             currentState.copy(
-                greeting = core.greeting()
+
             )
         }
     }

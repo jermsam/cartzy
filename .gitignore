@@ -72,14 +72,20 @@ node_modules/
 # Android / Kotlin
 platforms/android/build/
 platforms/android/.gradle/
+platforms/android/.kotlin/
 platforms/android/local.properties
 platforms/android/.cxx/
 platforms/android/app/build/
+platforms/android/app/release/
+platforms/android/app/debug/
 *.apk
 *.aab
 *.ap_
 *.dex
 *.class
+*.keystore
+*.jks
+platforms/android/app/google-services.json
 
 # Android Studio
 platforms/android/.idea/
